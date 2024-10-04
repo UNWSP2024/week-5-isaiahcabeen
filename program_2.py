@@ -1,13 +1,22 @@
-# Program #2: Math Quiz
-# Write a program that gives simple math quizzes.  The program should display two random numbers to be added, such as
+def random_num():
+    return 100 + (hash(str(id(random_num))) % 900)
 
-#     247
+def ask_question():
+    num1 = random_num()
+    num2 = random_num()
+    correct_answer = num1 + num2
 
-# + 129
+    print(f"\n{num1}\n+ {num2}\n------")
 
-# ------
+    try:
+        x = int(input("Enter your answer: "))
 
-# The program should allow the student to enter the answer.  
-# If the answer is correct, a message of congratulations should be displayed.  
-# If the answer is incorrect a message showing the correct answer should be displayed.  
-# The program must use a function that accomplishes part of the needed tasks.
+        if x == correct_answer:
+            print("Congratulations! That's correct.")
+        else:
+            print(f"Sorry, the answer is {correct_answer}.")
+    except ValueError:
+        print("Please enter a valid number.")
+
+if __name__ == "__main__":
+    ask_question()
